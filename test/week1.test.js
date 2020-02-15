@@ -24,8 +24,11 @@ describe("capitalize", () => {
 });
 
 describe("generateInitials", () => {
-  test("returns the initials of a firstname and surname", () => {
+  test.only("returns the initials of a firstname and surname", () => {
     expect(generateInitials("Frederic", "Bonneville")).toBe("F.B");
+    expect(generateInitials("Alba", "Rodriguez")).toBe("A.R");
+    expect(generateInitials("Albert", "Einstein")).toBe("A.E");
+    expect(generateInitials("Bill", "Gates")).toBe("B.G")
   });
 });
 
