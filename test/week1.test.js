@@ -24,7 +24,7 @@ describe("capitalize", () => {
 });
 
 describe("generateInitials", () => {
-  test.only("returns the initials of a firstname and surname", () => {
+  test("returns the initials of a firstname and surname", () => {
     expect(generateInitials("Frederic", "Bonneville")).toBe("F.B");
     expect(generateInitials("Alba", "Rodriguez")).toBe("A.R");
     expect(generateInitials("Albert", "Einstein")).toBe("A.E");
@@ -33,8 +33,12 @@ describe("generateInitials", () => {
 });
 
 describe("addVAT", () => {
-  test("adds a VAT of 20% to a price of 100", () => {
+  test.only("adds a VAT of 20% to a price of 100", () => {
     expect(addVAT(100, 20)).toBe(120);
+    expect(addVAT(13, 19)).toBe(15.47);
+    expect(addVAT(134, 21)).toBe(162.14);
+    expect(addVAT(65, 22)).toBe(79.30);
+
   });
 
   test("adds a VAT of 17.5% to a price of 40", () => {
