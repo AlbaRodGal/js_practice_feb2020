@@ -33,12 +33,8 @@ describe("generateInitials", () => {
 });
 
 describe("addVAT", () => {
-  test.only("adds a VAT of 20% to a price of 100", () => {
+  test("adds a VAT of 20% to a price of 100", () => {
     expect(addVAT(100, 20)).toBe(120);
-    expect(addVAT(13, 19)).toBe(15.47);
-    expect(addVAT(134, 21)).toBe(162.14);
-    expect(addVAT(65, 22)).toBe(79.30);
-
   });
 
   test("adds a VAT of 17.5% to a price of 40", () => {
@@ -52,7 +48,19 @@ describe("addVAT", () => {
   test("adds a VAT of 0% to a price of 25", () => {
     expect(addVAT(25, 0)).toBe(25);
   });
+
+  test("adds a VAT of 19% to a price of 13", () => {
+    expect(addVAT(13, 19)).toBe(15.47);
+  });
+  test("adds a VAT of 21% to a price of 134", () => {
+    expect(addVAT(134, 21)).toBe(162.14);
+  });
+
+test("adds a VAT of 22% to a price of 65", () => {
+  expect(addVAT(65, 22)).toBe(79.30);
+  });
 });
+
 
 describe("getSalePrice", () => {
   test("reduces a price of 100 by 50%", () => {
