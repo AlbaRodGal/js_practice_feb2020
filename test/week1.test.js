@@ -91,13 +91,13 @@ describe("getMiddleCharacter", () => {
 });
 
 describe("reverseWord", () => {
-  test.only("returns the provided word, reversed", () => {
+  test("returns the provided word, reversed", () => {
     expect(reverseWord("foo")).toBe("oof");
     expect(reverseWord("secret")).toBe("terces");
   });
 });
 
-  test.only("returns a longer sentence, reversed", () => {
+  test("returns a longer sentence, reversed", () => {
     expect(reverseWord("why would you even want to do this?")).toBe(
       "?siht od ot tnaw neve uoy dluow yhw");
     expect(reverseWord('should you?')).toBe("?uoy dluohs");
@@ -112,6 +112,8 @@ describe("reverseAllWords", () => {
     expect(
       reverseAllWords(["jest", "mocha", "rspec", "jasmine", "selenium"])
     ).toEqual(["tsej", "ahcom", "cepsr", "enimsaj", "muineles"]);
+    expect(reverseAllWords(['book', 'laptop', 'sunday', 'read', 'music', 'paradise'])).toEqual(
+      ['koob', 'potpal', 'yadnus', 'daer', 'cisum', 'esidarap'])
   });
 });
 
