@@ -91,16 +91,17 @@ describe("getMiddleCharacter", () => {
 });
 
 describe("reverseWord", () => {
-  test("returns the provided word, reversed", () => {
+  test.only("returns the provided word, reversed", () => {
     expect(reverseWord("foo")).toBe("oof");
-  });
-
-  test("returns a longer sentence, reversed", () => {
-    expect(reverseWord("why would you even want to do this?")).toBe(
-      "?siht od ot tnaw neve uoy dluow yhw"
-    );
+    expect(reverseWord("secret")).toBe("terces");
   });
 });
+
+  test.only("returns a longer sentence, reversed", () => {
+    expect(reverseWord("why would you even want to do this?")).toBe(
+      "?siht od ot tnaw neve uoy dluow yhw");
+    expect(reverseWord('should you?')).toBe("?uoy dluohs");
+  });
 
 describe("reverseAllWords", () => {
   test("reverses a single word in an array", () => {
