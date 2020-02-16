@@ -113,7 +113,7 @@ describe("reverseAllWords", () => {
       reverseAllWords(["jest", "mocha", "rspec", "jasmine", "selenium"])
     ).toEqual(["tsej", "ahcom", "cepsr", "enimsaj", "muineles"]);
     expect(reverseAllWords(['book', 'laptop', 'sunday', 'read', 'music', 'paradise'])).toEqual(
-      ['koob', 'potpal', 'yadnus', 'daer', 'cisum', 'esidarap'])
+      ['koob', 'potpal', 'yadnus', 'daer', 'cisum', 'esidarap']);
   });
 });
 

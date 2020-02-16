@@ -56,10 +56,14 @@ function reverseAllWords(words) {
   return words.map(reverseWord)
 }
   
-
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  // Add your code here!
+  let counter = 0;
+  for (let i = 0; i < users.length; i++){
+    if (users[i].type === 'Linux'){
+      counter++
+    }
+  } return counter
 }
 
 function getMeanScore(scores) {
