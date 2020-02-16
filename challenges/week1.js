@@ -55,20 +55,25 @@ function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
   return words.map(reverseWord)
 }
+
+let counter = 0
+
+function addLinuxUserToCounter(user){
+  if (user.type === 'Linux'){
+    counter++
+  } 
+} 
   
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  let counter = 0;
-  for (let i = 0; i < users.length; i++){
-    if (users[i].type === 'Linux'){
-      counter++
-    }
-  } return counter
+  users.forEach(addLinuxUserToCounter)
+  return counter
 }
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
-  // Add your code here!
+  
+
 }
 
 function simpleFizzBuzz(n) {
