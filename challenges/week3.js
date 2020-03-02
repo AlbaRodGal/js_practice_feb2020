@@ -9,17 +9,22 @@ function getSquares(nums) {
 function camelCaseWords(words) { //"my", "variable"
   if (words === undefined) throw new Error("words is required");
   let newArray = []
-  for(let i = 1; i < words.length; i++){
+  for (let i = 1; i < words.length; i++) {
     const UpperCasedInitials = words[i].charAt(0).toUpperCase()
     const remaining = words[i].slice(1)
     newArray.push(UpperCasedInitials, remaining)
   }
   const firstWord = words[0].slice(0)
-  return firstWord + newArray.join("") 
+  return firstWord + newArray.join("")
 }
 
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
+  let sum = 0;
+  for (let i = 0; i < people.length; i++) {
+    const total = people[i]['subjects'].length
+    sum = sum + total;
+  } return sum
 }
 
 function checkIngredients(menu, ingredient) {
