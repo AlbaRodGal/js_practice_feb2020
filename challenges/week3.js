@@ -8,7 +8,14 @@ function getSquares(nums) {
 
 function camelCaseWords(words) { //"my", "variable"
   if (words === undefined) throw new Error("words is required");
-
+  let newArray = []
+  for(let i = 1; i < words.length; i++){
+    const UpperCasedInitials = words[i].charAt(0).toUpperCase()
+    const remaining = words[i].slice(1)
+    newArray.push(UpperCasedInitials, remaining)
+  }
+  const firstWord = words[0].slice(0)
+  return firstWord + newArray.join("") 
 }
 
 function getTotalSubjects(people) {
