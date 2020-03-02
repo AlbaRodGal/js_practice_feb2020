@@ -31,10 +31,8 @@ function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
   for (let i = 0; i < menu.length; i++) {
-    for (ing in menu) {
-      if (menu[i]['ingredients'].includes(ingredient)) {
-        return true
-      }
+    if (menu[i]['ingredients'].includes(ingredient)) {
+      return true
     }
   } return false
 }
