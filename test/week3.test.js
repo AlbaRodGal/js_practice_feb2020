@@ -73,7 +73,7 @@ describe("getTotalSubjects", () => {
   });
 });
 
-describe("checkIngredients", () => {
+describe.only("checkIngredients", () => {
   test("returns false if no menu items include the specified ingredient", () => {
     const menu = [
       {
