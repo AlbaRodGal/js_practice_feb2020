@@ -29,7 +29,7 @@ function getCities(users) {
 
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+  return nums.map(num => Math.round(Math.sqrt(num) * 100) / 100)
 }
 
 function findSentencesContaining(sentences, str) {
