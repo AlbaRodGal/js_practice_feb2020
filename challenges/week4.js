@@ -40,7 +40,7 @@ function findSentencesContaining(sentences, str) {
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  // Your code here
+  return triangles.map(triangle => Math.max(...triangle))
 }
 
 module.exports = {
