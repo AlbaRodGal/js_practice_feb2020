@@ -13,7 +13,7 @@ const findNextNumber = (nums, n) => {
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
-  
+
   let counter = {
     0: 0,
     1: 0
@@ -28,7 +28,11 @@ const count1sand0s = str => {
 
 const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
-  // Your code here!
+  const str = n.toString()
+  const list = str.split('');
+  const reversedList = list.reverse().join('');
+  const reversedNumbers = Number(reversedList)
+  return reversedNumbers
 };
 
 const sumArrays = arrs => {
