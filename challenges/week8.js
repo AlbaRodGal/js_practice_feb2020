@@ -68,7 +68,15 @@ const findNeedle = (haystack, searchTerm) => {
 
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
+  let obj = {}
+  const removePunct = str.replace(/[,!.?"]/g,'')
+  const list = removePunct.toLowerCase().split(' ');
+  
+  for(let i = 0; i < list.length ; i++){
+    const word = list[i]
+    obj[word] = ++obj[word] || 1
+  }
+  return obj
 };
 
 module.exports = {
