@@ -8,7 +8,7 @@ const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
   if (!Array.isArray(arr)) throw new Error("an arr is required");
   let sum = 0;
-  arr.forEach(num => num % 3 === 0 || num % 5 === 0? sum += num : "")
+  arr.forEach(num => num % 3 === 0 || num % 5 === 0 ? sum += num : "")
   return sum
 };
 
@@ -31,6 +31,20 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+ 
+  let complementary = [];
+ 
+  const isValidDNA = /^[a,c,g,t, A,G,T,C]*$/.test(str)
+
+  if (isValidDNA) {
+    str.toUpperCase().split("").forEach(element => {
+      element === "A" ? complementary.push("T"):
+      element === "C" ? complementary.push("G") : 
+      element === "G" ? complementary.push("C") : 
+      complementary.push("A")
+    })
+  };
+  return complementary.join("")
 };
 
 /**

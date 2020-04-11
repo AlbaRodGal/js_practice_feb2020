@@ -1,7 +1,6 @@
 const { sumMultiples, 
         isValidDNA,
-
-
+        getComplementaryDNA
     } = require("../challenges/week9")
 
 describe("sumMultiples", () => {
@@ -50,5 +49,23 @@ describe("isValidDNA", () => {
         const result = isValidDNA("cagGTGaagtc");
         const expected = true;
         expect(result).toBe(expected);
+    });
+});
+
+describe("getComplementaryDNA", () => {
+    test("it returns GACT when passed CTGA", () => {
+        const result = getComplementaryDNA("CTGA");
+        const expected = "GACT";
+        expect(result).toEqual(expected)
+    });
+    test("it returns AGTC when passed TCAG", () => {
+        const result = getComplementaryDNA("TCAG");
+        const expected = "AGTC";
+        expect(result).toEqual(expected)
+    });
+    test("it shouldn't be case sensitive", () => {
+        const result = getComplementaryDNA("agtc");
+        const expected = "TCAG"
+        expect(result).toEqual(expected)
     });
 });
