@@ -6,6 +6,10 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
+  if (!Array.isArray(arr)) throw new Error("an arr is required");
+  let sum = 0;
+  arr.forEach(num => num % 3 === 0 || num % 5 === 0? sum += num : "")
+  return sum
 };
 
 /**
@@ -36,7 +40,9 @@ const isItPrime = n => {
 };
 
 /**
- * This function should receive a number and return an array of n arrays, each filled with n items. The parameter "fill" should be used as the filler of the arrays. For example, given parameters 3 and "foo" the resulting matrix should be:
+ * This function should receive a number and return an array of n arrays, each filled with n items. 
+ * The parameter "fill" should be used as the filler of the arrays. 
+ * For example, given parameters 3 and "foo" the resulting matrix should be:
  * [
  *   ["foo", "foo", "foo"],
  *   ["foo", "foo", "foo"],
@@ -66,6 +72,9 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+  if (staff.length === 0) {
+    return false
+  }
 };
 
 module.exports = {
