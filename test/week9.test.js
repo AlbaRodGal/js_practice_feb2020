@@ -1,6 +1,7 @@
 const { sumMultiples, 
         isValidDNA,
-        getComplementaryDNA
+        getComplementaryDNA,
+        createMatrix
     } = require("../challenges/week9")
 
 describe("sumMultiples", () => {
@@ -67,5 +68,18 @@ describe("getComplementaryDNA", () => {
         const result = getComplementaryDNA("agtc");
         const expected = "TCAG"
         expect(result).toEqual(expected)
+    });
+});
+
+describe("createMatrix", () => {
+    test("it returns an empty array when passed 0", () => {
+        const result = createMatrix(0, "hi");
+        const expected = [];
+        expect(result).toEqual([])
+    });
+    test("it returns an array of n arrays, each filled with n items", () =>{
+        const result = createMatrix(2, "hello");
+        const expected = [["hello"], ["hello"]];
+        expect(result).toEqual([["hello"], ["hello"]])
     });
 });

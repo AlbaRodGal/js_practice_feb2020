@@ -31,29 +31,31 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
- 
+
   let complementary = [];
- 
+
   const isValidDNA = /^[a,c,g,t, A,G,T,C]*$/.test(str)
 
   if (isValidDNA) {
     str.toUpperCase().split("").forEach(element => {
-      element === "A" ? complementary.push("T"):
-      element === "C" ? complementary.push("G") : 
-      element === "G" ? complementary.push("C") : 
-      complementary.push("A")
+      element === "A" ? complementary.push("T") :
+        element === "C" ? complementary.push("G") :
+          element === "G" ? complementary.push("C") :
+            complementary.push("A")
     })
   };
   return complementary.join("")
 };
 
 /**
- * This function should receive a number and return true/false depending on whether it is a prime number or not. A prime number is a number that can only be divided evenly by 1 and itself (for example, 7)
+ * This function should receive a number and return true/false depending on whether it is a prime number or not. 
+ * A prime number is a number that can only be divided evenly by 1 and itself (for example, 7)
  * @param {Number} n
  * @returns {Boolean}
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+
 };
 
 /**
@@ -72,6 +74,11 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+  let matrix = [];
+  while (matrix.length < n) {
+    matrix.push(fill.split(" "))
+  }
+  return matrix
 };
 
 /**
