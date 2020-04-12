@@ -1,83 +1,57 @@
 function capitalize(word) {
   if (word === undefined) throw new Error("word is required");
-  const capFirstLetter = word.charAt(0).toUpperCase()
-  const remaining = word.slice(1)
-  return capFirstLetter + remaining
+  return word.charAt(0).toUpperCase() + word.slice(1)
 }
 
 function generateInitials(firstName, lastName) {
   if (firstName === undefined) throw new Error("firstName is required");
   if (lastName === undefined) throw new Error("lastName is required");
-  
-  const initialFirstName = firstName.charAt(0)
-  const initialLastName = lastName.charAt(0)
-  const initials = initialFirstName + '.' + initialLastName
-  return initials
+  return firstName.charAt(0) + '.' + lastName.charAt(0)
 }
 
 function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
-  const totalPrice = originalPrice * (1 + (vatRate / 100))
-  const roundedTotalPrice = Math.round(totalPrice * 100) / 100
-  return roundedTotalPrice
+  return Math.round(originalPrice * (1 + (vatRate / 100)) * 100) / 100
 }
 
 function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
-  const discount = originalPrice * (reduction / 100)
-  const salePrice = originalPrice - discount
-  const roundedSalePrice = Math.round(salePrice * 100) / 100
-  return roundedSalePrice
+  return Math.round((originalPrice - (originalPrice * (reduction / 100))) * 100) / 100
 }
 
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
-  const lengthOfStr = str.length
-  const middle = lengthOfStr / 2
-  if(lengthOfStr % 2 === 0){
-    return str.charAt((middle - 1)) + str.charAt(middle) 
+  if(str.length % 2 === 0 ){
+    return str.charAt((str.length / 2) -1) + str.charAt(str.length / 2)
   } else {
-    return str.charAt(middle)
+    return str.charAt(str.length / 2)
   }
-} 
+}
 
 function reverseWord(word) {
   if (word === undefined) throw new Error("word is required");
-  const listOfCharacters = word.split('')
-  const reversedListOfCharacters = listOfCharacters.reverse()
-  const reversedWord = reversedListOfCharacters.join('')
-  return reversedWord
+  return word.split('').reverse('').join('')
 }
 
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
   return words.map(reverseWord)
 }
-
-let counter = 0
-
-function addLinuxUserToCounter(user){
-  if (user.type === 'Linux'){
-    counter++
-  } 
-} 
   
 function countLinuxUsers(users) {
+  let counter = 0;
   if (users === undefined) throw new Error("users is required");
-  users.forEach(addLinuxUserToCounter)
+  users.forEach(user => user.type === 'Linux'? counter++:"");
   return counter
 }
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
   let total = 0
-  for (let i = 0; i < scores.length; i++){
-    total += scores[i];
-    }
-  const mean = Math.round(total / scores.length * 100) / 100
-  return mean
+  scores.forEach(score => total += score)
+  return Math.round(total / scores.length * 100) / 100
 }
 
 function simpleFizzBuzz(n) {
