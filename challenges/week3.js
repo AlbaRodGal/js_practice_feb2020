@@ -1,30 +1,24 @@
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
-  const square = nums.map(function (num) {
+  return nums.map(function (num) {
     return num * num
   })
-  return square
 }
 
 function camelCaseWords(words) { //"my", "variable"
   if (words === undefined) throw new Error("words is required");
   let newArray = []
   for (let i = 1; i < words.length; i++) {
-    const UpperCasedInitials = words[i].charAt(0).toUpperCase()
-    const remaining = words[i].slice(1)
-    newArray.push(UpperCasedInitials, remaining)
+    newArray.push(words[i].charAt(0).toUpperCase(), words[i].slice(1))
   }
-  const firstWord = words[0].slice(0)
-  return firstWord + newArray.join("")
+  return words[0].slice(0) + newArray.join("")
 }
 
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
   let sum = 0;
-  for (let i = 0; i < people.length; i++) {
-    const total = people[i]['subjects'].length
-    sum = sum + total;
-  } return sum
+  people.forEach(person => sum += person['subjects'].length)
+  return sum
 }
 
 //
