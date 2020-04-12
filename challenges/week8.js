@@ -28,18 +28,12 @@ const count1sand0s = str => {
 
 const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
-  const str = n.toString()
-  const list = str.split('');
-  const reversedList = list.reverse().join('');
-  const reversedNumbers = Number(reversedList)
-  return reversedNumbers
+  return Number(n.toString().split('').reverse().join(''))
 };
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  const EachArraySum = arrs.map(element => element.reduce((a,b) => a + b))
-  const sumResults = EachArraySum.reduce((a,b) => a + b)
-  return sumResults
+  return arrs.map(element => element.reduce((a,b) => a + b)).reduce((a,b) => a + b)
 };
 
 const arrShift = arr => {
@@ -53,13 +47,11 @@ const arrShift = arr => {
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
-  const values = Object.values(haystack);
-  const valuesLowCase = values.map(val => typeof val === 'string'? val.toLowerCase().split(' '): val)
+  const values = Object.values(haystack).map(val => typeof val === 'string'? val.toLowerCase().split(' '): val)
   const searchTermLowCase = searchTerm.toLowerCase()
-  for(let i = 0; i < valuesLowCase.length; i++){
-    const value = valuesLowCase[i];
-    for(let j = 0; j < value.length; j++){
-      if(value[j].includes(searchTermLowCase)){
+  for(let i = 0; i < values.length; i++){
+    for(let j = 0; j < values[i].length; j++){
+      if(values[i][j].includes(searchTermLowCase)){
         return true
       }
     }
@@ -69,12 +61,9 @@ const findNeedle = (haystack, searchTerm) => {
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
   let obj = {}
-  const removePunct = str.replace(/[,!.?"]/g,'')
-  const list = removePunct.toLowerCase().split(' ');
-  
-  for(let i = 0; i < list.length ; i++){
-    const word = list[i]
-    obj[word] = ++obj[word] || 1
+  const sentence = str.replace(/[,!.?"]/g,'').toLowerCase().split(' ')
+  for(let i = 0; i < sentence.length ; i++){
+    obj[sentence[i]] = ++obj[sentence[i]] || 1
   }
   return obj
 };
