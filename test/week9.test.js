@@ -1,9 +1,10 @@
-const { sumMultiples, 
-        isValidDNA,
-        getComplementaryDNA,
-        createMatrix, 
-        areWeCovered
-    } = require("../challenges/week9")
+const { sumMultiples,
+    isValidDNA,
+    getComplementaryDNA,
+    isItPrime,
+    createMatrix,
+    areWeCovered
+} = require("../challenges/week9")
 
 describe("sumMultiples", () => {
     test("it throws an error if not passed an array", () => {
@@ -71,14 +72,25 @@ describe("getComplementaryDNA", () => {
         expect(result).toEqual(expected)
     });
 });
-
+describe("isItPrime", () => {
+    test("it returns true if n is prime", () => {
+        expect(isItPrime(7)).toBe(true)
+        expect(isItPrime(499)).toBe(true)
+        expect(isItPrime(601)).toBe(true)
+    });
+    test("it returns false if n is not prime", () => {
+        expect(isItPrime(9)).toBe(false)
+        expect(isItPrime(345)).toBe(false)
+        expect(isItPrime(100)).toBe(false)
+    });
+});
 describe("createMatrix", () => {
     test("it returns an empty array when passed 0", () => {
         const result = createMatrix(0, "hi");
         const expected = [];
         expect(result).toEqual([])
     });
-    test("it returns an array of n arrays, each filled with n items", () =>{
+    test("it returns an array of n arrays, each filled with n items", () => {
         const result = createMatrix(2, "hello");
         const expected = [["hello"], ["hello"]];
         expect(result).toEqual([["hello"], ["hello"]])
@@ -97,10 +109,10 @@ describe("areWeCovered", () => {
     });
     test("it returns false is there are staff but < 3 not scheduled to work", () => {
         const staff = [
-            {name: "peter", rota: ["Monday", "Tuesday"]},
-            {name: "mary", rota: ["Monday", "Tuesday"]},
-            {name: "john", rota: ["Monday", "Tuesday"]},
-            {name: "julie", rota: ["Monday", "Tuesday"]}
+            { name: "peter", rota: ["Monday", "Tuesday"] },
+            { name: "mary", rota: ["Monday", "Tuesday"] },
+            { name: "john", rota: ["Monday", "Tuesday"] },
+            { name: "julie", rota: ["Monday", "Tuesday"] }
         ];
         expect(areWeCovered(staff, "Wednesday")).toBe(false);
         expect(areWeCovered(staff, "Saturday")).toBe(false);
