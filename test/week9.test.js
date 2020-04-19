@@ -108,7 +108,7 @@ describe("areWeCovered", () => {
         expect(areWeCovered([], "Friday")).toBe(false);
         expect(areWeCovered([], "Saturday")).toBe(false);
     });
-    test("it returns false is there are staff but < 3 not scheduled to work", () => {
+    test("it returns false if there are staff but < 3 not scheduled to work", () => {
         const staff = [
             { name: "peter", rota: ["Monday", "Tuesday"] },
             { name: "mary", rota: ["Monday", "Tuesday"] },
@@ -119,4 +119,15 @@ describe("areWeCovered", () => {
         expect(areWeCovered(staff, "Saturday")).toBe(false);
         expect(areWeCovered(staff, "Sunday")).toBe(false);
     });
+    test("it returns true if there are 3 or more people working on the same day", () => {
+        const staff = [
+            { name: "peter", rota: ["Monday", "Tuesday"] },
+            { name: "mary", rota: ["Monday", "Tuesday"] },
+            { name: "john", rota: ["Monday", "Tuesday"] },
+            { name: "julie", rota: ["Monday", "Tuesday"] }
+        ]
+
+        expect(areWeCovered(staff, "Monday")).toBe(true);
+    }
+    )
 });
