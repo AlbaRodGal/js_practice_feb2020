@@ -76,11 +76,13 @@ const isItPrime = n => {
  * @returns {Array}
  */
 const createMatrix = (n, fill) => {
-  if (n === undefined) throw new Error("n is required");
-  if (fill === undefined) throw new Error("fill is required");
+  let array = [];
   let matrix = [];
+  while (array.length < n) {
+    array.push(fill)
+  }
   while (matrix.length < n) {
-    matrix.push(fill.split(" "))
+    matrix.push(array)
   }
   return matrix
 };

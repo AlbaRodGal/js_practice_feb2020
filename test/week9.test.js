@@ -91,9 +91,10 @@ describe("createMatrix", () => {
         expect(result).toEqual([])
     });
     test("it returns an array of n arrays, each filled with n items", () => {
-        const result = createMatrix(2, "hello");
-        const expected = [["hello"], ["hello"]];
-        expect(result).toEqual([["hello"], ["hello"]])
+        expect(createMatrix(2, "hello")).toEqual([["hello", "hello"], ["hello", "hello"]]);
+        expect(createMatrix(3, "Why not?")).toEqual([["Why not?", "Why not?", "Why not?"], ["Why not?", "Why not?", "Why not?"], ["Why not?", "Why not?", "Why not?"]]);
+        expect(createMatrix(4, "yummy!")).toEqual([["yummy!", "yummy!", "yummy!", "yummy!"], ["yummy!", "yummy!", "yummy!", "yummy!"], ["yummy!", "yummy!", "yummy!", "yummy!"], ["yummy!", "yummy!", "yummy!", "yummy!"]]);
+
     });
 });
 
