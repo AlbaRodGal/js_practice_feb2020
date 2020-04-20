@@ -62,28 +62,31 @@ const createRange = (start, end, step) => {
  * For example, if passed the above users and the date "2019-05-04" the function should return ["beth_1234"] as she used over 100 minutes of screentime on that date.
  * @param {Array} users
  */
+
 const getScreentimeAlertList = (users, date) => {
-  if (users === undefined) throw new Error("users is required");
-  if (date === undefined) throw new Error("date is required");
-  const values = Object.values(users)
-  let minutes = 0
-  for (i = 0; i < values.length; i++) {
-    for (j = 0; j < values[i]['screenTime'].length; j++) {
-      if (values[i]['screenTime'][j]['date'] === date) {
-        for (key in values[i]['screenTime'][j]['usage'])
-          minutes = minutes + values[i]['screenTime'][j]['usage'][key]
+  let minutes = {}
+  let user = []
+  for (i = 0; i < users.length; i++) {
+    for (j = 0; j < users[i]['screenTime'].length; j++) {
+      if (users[i]['screenTime'][j]['date'] === date) {
+        minutes[users[i]['username']] = Object.values(users[i]['screenTime'][j]['usage']).reduce((a, b) => a + b)
       }
     }
-    if (minutes > 100) {
-      return values[i]['username']
-    } 
-  } return "0 results"
+  }
+  for (k = 0; k < Object.values(minutes).length; k++) {
+    if (Object.values(minutes)[k] > 100) {
+      user.push(Object.keys(minutes)[k])
+    }
+  }
+  return user
 }
 
 /**
- * This function will receive a hexadecimal color code in the format #FF1133. A hexadecimal code is a number written in hexadecimal notation, i.e. base 16. If you want to know more about hexadecimal notation:
- * https://www.youtube.com/watch?v=u_atXp-NF6w
- * For colour codes, the first 2 chars (FF in this case) represent the amount of red, the next 2 chars (11) represent the amound of green, and the last 2 chars (33) represent the amount of blue.
+ * This function will receive a hexadecimal color code in the format #FF1133.
+ * A hexadecimal code is a number written in hexadecimal notation, i.e. base 16. 
+ * If you want to know more about hexadecimal notation: https://www.youtube.com/watch?v=u_atXp-NF6w
+ * For colour codes, the first 2 chars (FF in this case) represent the amount of red, 
+ * the next 2 chars (11) represent the amound of green, and the last 2 chars (33) represent the amount of blue.
  * Colours can also be represented in RGB format, using decimal notation.
  * This function should transform the hex code into an RGB code in the format:
  * "rgb(255,17,51)"

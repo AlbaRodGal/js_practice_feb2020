@@ -47,7 +47,7 @@ describe("getScreentimeAlertList", () => {
                 ]
             },
         ];
-        expect(getScreentimeAlertList(users, "2019-05-04")).toBe("beth_1234");
+        expect(getScreentimeAlertList(users, "2019-05-04")).toEqual(["beth_1234"]);
     });
     test("It returns an array of usernames of users who have used more than 100 minutes of screentime for a given date", () => {
         const users = [
@@ -73,9 +73,9 @@ describe("getScreentimeAlertList", () => {
                 ]
             },
         ];
-        expect(getScreentimeAlertList(users, "2019-06-14")).toBe("sam_j_1989")
+        expect(getScreentimeAlertList(users, "2019-06-14")).toEqual(["sam_j_1989"])
     });
-    test("It returns 0 results if nobody spent over 100 minutes", () => {
+    test("It returns empty array if nobody spent over 100 minutes", () => {
         const users = [
             {
                 username: "beth_1234",
@@ -99,6 +99,35 @@ describe("getScreentimeAlertList", () => {
                 ]
             },
         ];
-        expect(getScreentimeAlertList(users, "2019-06-13")).toBe("0 results")
+        expect(getScreentimeAlertList(users, "2019-06-13")).toEqual([])
+    })
+    test("It returns an array of usernames of users who have used more than 100 minutes of screentime for a given date", () => {
+        const users = [
+            {
+                username: "beth_1234",
+                name: "Beth Smith",
+                screenTime: [
+                    { date: "2019-05-01", usage: { twitter: 34, instagram: 22, facebook: 40 } },
+                    { date: "2019-06-14", usage: { twitter: 34, instagram: 2, facebook: 40 } },
+                    { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31 } },
+                    { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19 } },
+                    { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61 } },
+                    { date: "2019-06-10", usage: { twitter: 34, instagram: 40, facebook: 40 } },
+
+                ]
+            },
+            {
+                username: "sam_j_1989",
+                name: "Sam Jones",
+                screenTime: [
+                    { date: "2019-06-11", usage: { mapMyRun: 2, whatsApp: 0, facebook: 0, safari: 10 } },
+                    { date: "2019-06-13", usage: { mapMyRun: 10, whatsApp: 20, facebook: 10, safari: 16 } },
+                    { date: "2019-06-14", usage: { mapMyRun: 42, whatsApp: 20, facebook: 40, safari: 31 } },
+                    { date: "2019-06-10", usage: { mapMyRun: 42, whatsApp: 20, facebook: 40, safari: 31 } },
+                    { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61 } },
+                ]
+            },
+        ];
+        expect(getScreentimeAlertList(users, "2019-06-10")).toEqual(["beth_1234", "sam_j_1989"])
     })
 })
