@@ -1,7 +1,8 @@
 const {
     sumDigits,
     createRange,
-    getScreentimeAlertList
+    getScreentimeAlertList,
+    hexToRGB
 
 } = require("../challenges/week10")
 
@@ -130,4 +131,14 @@ describe("getScreentimeAlertList", () => {
         ];
         expect(getScreentimeAlertList(users, "2019-06-10")).toEqual(["beth_1234", "sam_j_1989"])
     })
-})
+});
+describe("hexToRGB", () => {
+    test("It returns the equivalent color in RGB format", () => {
+        expect(hexToRGB("#FF1133")).toBe("rgb(255,17,51)"),
+            expect(hexToRGB("#47ff11")).toBe("rgb(71,255,17)"),
+            expect(hexToRGB("#ffd9a6")).toBe("rgb(255,217,166)"),
+            expect(hexToRGB("#34FE34")).toBe("rgb(52,254,52)"),
+            expect(hexToRGB("#2200FF")).toBe("rgb(34,0,255)"),
+            expect(hexToRGB("#112233")).toBe("rgb(17,34,51)")
+    });
+});

@@ -64,21 +64,21 @@ const createRange = (start, end, step) => {
  */
 
 const getScreentimeAlertList = (users, date) => {
-  let minutes = {}
-  let user = []
+  let minutesByUsername = {}
+  let usersOver100 = []
   for (i = 0; i < users.length; i++) {
     for (j = 0; j < users[i]['screenTime'].length; j++) {
       if (users[i]['screenTime'][j]['date'] === date) {
-        minutes[users[i]['username']] = Object.values(users[i]['screenTime'][j]['usage']).reduce((a, b) => a + b)
+        minutesByUsername[users[i]['username']] = Object.values(users[i]['screenTime'][j]['usage']).reduce((a, b) => a + b)
       }
     }
   }
-  for (k = 0; k < Object.values(minutes).length; k++) {
-    if (Object.values(minutes)[k] > 100) {
-      user.push(Object.keys(minutes)[k])
+  for (k = 0; k < Object.values(minutesByUsername).length; k++) {
+    if (Object.values(minutesByUsername)[k] > 100) {
+      usersOver100.push(Object.keys(minutesByUsername)[k])
     }
   }
-  return user
+  return usersOver100
 }
 
 /**
@@ -95,6 +95,9 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+  const format = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexStr);
+  if(format){
+    return ["rgb(",parseInt(format[1], 16),",",parseInt(format[2], 16),",",parseInt(format[3], 16),")"].join("")}
 };
 
 /**
