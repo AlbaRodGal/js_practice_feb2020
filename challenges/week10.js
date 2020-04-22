@@ -96,22 +96,38 @@ const getScreentimeAlertList = (users, date) => {
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
   const format = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexStr);
-  if(format){
-    return ["rgb(",parseInt(format[1], 16),",",parseInt(format[2], 16),",",parseInt(format[3], 16),")"].join("")}
+  if (format) {
+    return ["rgb(", parseInt(format[1], 16), ",", parseInt(format[2], 16), ",", parseInt(format[3], 16), ")"].join("")
+  }
 };
 
 /**
- * This function takes a noughts and crosses board represented as an array, where an empty space is represented with null.
+ * This function takes a noughts and crosses board 
+ * represented as an array, 
+ * where an empty space is represented with null.
  * [
  *  ["X", "0", null],
  *  ["X", null, "0"],
  *  ["X", null, "0"]
  * ]
- * The function should return "X" if player X has won, "0" if the player 0 has won, and null if there is currently no winner.
+ * The function should return "X" if player X has won, 
+ * "0" if the player 0 has won, 
+ * and null if there is currently no winner.
  * @param {Array} board
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+  for (i = 0; i < board.length; i++) {
+    for (j = 0; j < board[i].length; j++) {
+      if (board[i][0] === "X" && board[i][0] === board[i][1] && board[i][0] === board[i][2] ||
+        board[0][j] === "X" && board[0][j] === board[1][j] && board[0][j] === board[2][j]) {
+        return "X"
+      } else if (board[i][0] === "0" && board[i][0] === board[i][1] && board[i][0] === board[i][2] ||
+        board[0][j] === "0" && board[0][j] === board[1][j] && board[0][j] === board[2][j]) {
+        return "0"
+      }
+    }
+  } return null
 };
 
 module.exports = {
